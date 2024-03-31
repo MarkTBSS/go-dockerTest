@@ -7,10 +7,12 @@ WORKDIR /app
 # Copy the local package files to the container's workspace
 COPY . .
 
+RUN go mod download
+
 # Build the Go application
-RUN go build -o main .
+RUN go build -o binary_name .
 
 EXPOSE 8080
 
 # Command to run the executable
-CMD ["./main"]
+CMD ["./binary_name"]
